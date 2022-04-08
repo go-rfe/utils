@@ -5,7 +5,7 @@ const (
 )
 
 // CalculateLuhn return the check number
-func CalculateLuhn(number int) int {
+func CalculateLuhn(number int64) int64 {
 	checkNumber := checksum(number)
 
 	if checkNumber == 0 {
@@ -16,12 +16,12 @@ func CalculateLuhn(number int) int {
 }
 
 // Valid check number is valid or not based on Luhn algorithm
-func Valid(number int) bool {
+func Valid(number int64) bool {
 	return (number%luhnMultiplier+checksum(number/luhnMultiplier))%luhnMultiplier == 0
 }
 
-func checksum(number int) int {
-	var luhn int
+func checksum(number int64) int64 {
+	var luhn int64
 
 	for i := 0; number > 0; i++ {
 		cur := number % luhnMultiplier
